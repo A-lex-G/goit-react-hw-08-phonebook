@@ -1,8 +1,8 @@
 // import css from "./Form.module.css";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from '../../redux/operations';
-import { selectContactsArr } from "redux/selectors";
+import { addContact } from '../../redux/auth/operations';
+import { selectContactsArr } from "redux/contacts/selectors";
 import {
     StyledForm,
     StyledLabel,
