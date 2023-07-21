@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
-// import css from "./ContactsList.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContact, fetchContacts } from "redux/auth/operations";
+import { deleteContact, fetchContacts } from "redux/contacts/operations";
 import { selectContactsArr, selectVisibleContacts } from "redux/contacts/selectors";
 import { Loader } from "components/Loader/Loader";
 import {
@@ -46,7 +45,7 @@ export const ContactsList = () => {
                             <p>
                                 {contact.name}:
                                 <span>
-                                    {contact.phone}
+                                    {contact.number}
                                 </span>
                             </p>
                             <StyledDeleteButton

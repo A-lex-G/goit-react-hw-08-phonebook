@@ -1,7 +1,15 @@
 import { useDispatch } from "react-redux"
 import { register } from "redux/auth/operations";
+import {
+    StyledRegisterForm,
+    StyledRegWrapper,
+    StyledRegisterButton,
+    StyledLabel,
+    StyledInput
+} from "./RegisterForm.styled";
 
 export const RegisterForm = () => {
+    
     const dispatch = useDispatch();
 
     const handleRegistration = e => {
@@ -15,40 +23,42 @@ export const RegisterForm = () => {
             password: data.password.value,
         }
         dispatch(register(registrationCredentials));
-        console.log('registrationCredentials =>', registrationCredentials);
     }
 
     return (
-        <form
+        <StyledRegisterForm
             onSubmit={handleRegistration}
             autoComplete="off">
-            <label>
-                User Name:
-                <input
-                    type="text"
-                    name='name'
-                    placeholder="please set user name"
-                />
-            </label>
-            <label>
-                User Email:
-                <input
-                    type="email"
-                    name='email'
-                    placeholder="please set user email"
-                />
-            </label>
-            <label>
-                <input
-                    type="password"
-                    name='password'
-                    placeholder="please set user password"
-                />
-            </label>
-            <button
+            <StyledRegWrapper>
+                <StyledLabel>
+                    User name :
+                    <StyledInput
+                        type="text"
+                        name='name'
+                        placeholder="please set user name"
+                    />
+                </StyledLabel>
+                <StyledLabel>
+                    User email :
+                    <StyledInput
+                        type="email"
+                        name='email'
+                        placeholder="please set user email"
+                    />
+                </StyledLabel>
+                <StyledLabel>
+                    User password :
+                    <StyledInput
+                        type="password"
+                        name='password'
+                        placeholder="please set user password"
+                    />
+                </StyledLabel>
+            </StyledRegWrapper>
+            <StyledRegisterButton
                 type="submit">
                 Register
-            </button>
-        </form>
+            </StyledRegisterButton>
+        </StyledRegisterForm>
     )
 }

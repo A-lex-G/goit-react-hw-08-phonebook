@@ -7,7 +7,7 @@ const setAuthHeader = token => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-const clearAuthHeader = token => {
+const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = '';
 };
 
@@ -17,11 +17,8 @@ export const register = createAsyncThunk(
     try {
       const res = await axios.post('/users/signup', credentials);
       setAuthHeader(res.data.token);
-      console.log(res.data.token);
       return res.data;
     } catch (error) {
-      console.log(error);
-      // console.log(error.res.data);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -30,14 +27,11 @@ export const register = createAsyncThunk(
 export const LogIn = createAsyncThunk(
   'auth/login',
   async (credentials, thunkAPI) => {
-    // console.log(credentials);
     try {
       const res = await axios.post('/users/login', credentials);
       setAuthHeader(res.data.token);
-      // console.log('response=>', res);
       return res.data;
     } catch (error) {
-      // console.log(error);
       return thunkAPI.rejectWithValue(error.message);
     }
   }
@@ -52,36 +46,20 @@ export const LogOut = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   }
 });
 
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
   async (_, thunkAPI) => {
-    try {
-      const response = await axios.get('/contacts');
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
+    const { token } = thunkAPI.getState().auth;
 
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async (contactData, thunkAPI) => {
-    try {
-      const response = await axios.post('/contacts', contactData);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    if (!token) {
+      return thunkAPI.rejectWithValue('Not valid token');
     }
-  }
-);
 
-export const deleteContact = createAsyncThunk(
-  'contacts/delContact',
-  async (id, thunkAPI) => {
+    setAuthHeader(token);
+
     try {
-      const response = await axios.delete(`/contacts/${id}`);
-      return response.data;
+      const res = await axios.get('/users/current');
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }

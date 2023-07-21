@@ -21,11 +21,11 @@ export const StyledInput = styled.input`
     transition: border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover {
-        border: 1px solid var(--green);
+        border: 1px solid tomato;
     }
 `
 export const StyledAddButton = styled.button`
-    border: 1px solid var(--green);
+    border: 1px solid var(--navy-blue);
     background-color: var(--cornflower);
     border-radius: 4px;
     margin-top: 20px;
@@ -34,7 +34,7 @@ export const StyledAddButton = styled.button`
     border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
     :hover {
-        background-color: var(--green);
+        background-color: tomato;
         border: 1px solid var(--cornflower);
     }
 `

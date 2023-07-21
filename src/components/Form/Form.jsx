@@ -1,7 +1,6 @@
-// import css from "./Form.module.css";
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
-import { addContact } from '../../redux/auth/operations';
+import { addContact } from '../../redux/contacts/operations';
 import { selectContactsArr } from "redux/contacts/selectors";
 import {
     StyledForm,
@@ -26,6 +25,7 @@ export const Form = () => {
         e.preventDefault();
 
         const form = e.target;
+        console.dir(form)
         
         const { value } = form.elements.name;
 
@@ -36,8 +36,9 @@ export const Form = () => {
 
         const contactData = {
             [form.elements.name.name]: value,
-            [form.elements.phone.name]: form.elements.phone.value,
+            [form.elements.number.name]: form.elements.number.value,
         }
+        console.log(contactData)
         
         dispatch(addContact(contactData));
 
@@ -69,7 +70,7 @@ export const Form = () => {
                     Number
                 </StyledLabel>
                 <StyledInput
-                    name="phone"
+                    name="number"
                     id={numberInputId}
                     type="tel"
                     pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

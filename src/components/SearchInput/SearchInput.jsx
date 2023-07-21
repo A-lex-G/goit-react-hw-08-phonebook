@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { useDispatch, useSelector } from "react-redux";
 import { updFilter } from "redux/filter/filterSlice";
-import { selectFilterVal } from "redux/contacts/selectors";
+import { selectFilterVal } from "redux/filter/selectors";
 import { StyledSearchInputLabel, StyledSerchInput } from "./SearchInput.styled";
 
 export const SearchInput = () => {

@@ -1,5 +1,12 @@
 import { useDispatch } from "react-redux";
 import { LogIn } from "redux/auth/operations";
+import {
+    StyledLoginForm,
+    StyledLogInputWrapper,
+    StyledLoginButton,
+    StyledLabel,
+    StyledInput
+} from "./LoginForm.styled";
 
 export const LoginForm = () => {
 
@@ -14,41 +21,40 @@ export const LoginForm = () => {
             email: data.email.value,
             password: data.password.value,
         }
-        dispatch(LogIn(logInCredentials));
-        console.log('logInCredentials =>', logInCredentials);
-        
+        dispatch(LogIn(logInCredentials));        
     }
 
     return (
         <>
-            <form
+            <StyledLoginForm
                 onSubmit={handleLogIn}
                 autoComplete="off"
             >
-                <label
-                    placeholder="please set your email"
-                >
-                    Email:
-                    <input
-                        type="email"
-                        name="email"
-                    />
-                </label>
-                <label
-                    placeholder="please set your password"
-                >
-                    Password:
-                    <input
-                        type="password"
-                        name="password"
-                    />
-                </label>
-                <button
+                <StyledLogInputWrapper>
+                    <StyledLabel
+                        placeholder="please set your email"
+                    >
+                        Email :
+                        <StyledInput
+                            type="email"
+                            name="email"
+                        />
+                    </StyledLabel>
+                    <StyledLabel
+                        placeholder="please set your password"
+                    >
+                        Password :
+                        <StyledInput
+                            type="password"
+                            name="password"
+                        />
+                    </StyledLabel>
+                </StyledLogInputWrapper>
+                <StyledLoginButton
                     type="submit">
                     LogIn
-                </button>
-
-            </form>
+                </StyledLoginButton>
+            </StyledLoginForm>
         </>
     )
 }
