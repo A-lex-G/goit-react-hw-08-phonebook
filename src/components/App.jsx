@@ -7,6 +7,7 @@ import { PrivateRoute } from "./PrivateRoute";
 import { useDispatch } from "react-redux";
 import { refreshUser } from "redux/auth/operations";
 import { useAuth } from "hooks";
+import NotFound from "pages/NotFound";
 
 const HomePage = lazy(() => import('../pages/Home'));
 const RegisterPage = lazy(() => import('../pages/Register'));
@@ -59,6 +60,10 @@ export const App = () => {
               }
             />
           </Route>
+          <Route
+              path='*'
+              element={<NotFound />}
+            />
         </Routes>
       </StyledContainer>
     )

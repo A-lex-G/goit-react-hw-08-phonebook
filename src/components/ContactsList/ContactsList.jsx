@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteContact, fetchContacts } from "redux/contacts/operations";
+import { deleteContact } from "redux/contacts/operations";
 import { selectContactsArr, selectVisibleContacts } from "redux/contacts/selectors";
 import { Loader } from "components/Loader/Loader";
 import {
@@ -22,10 +22,6 @@ export const ContactsList = () => {
         dispatch(deleteContact(id));
         Notiflix.Notify.success(`${name} was deleted from your contacts`);
     }
-
-    useEffect(() => {
-        dispatch(fetchContacts());
-    }, [dispatch]);
     
     return (
         <>
