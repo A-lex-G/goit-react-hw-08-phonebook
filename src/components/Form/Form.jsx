@@ -25,7 +25,6 @@ export const Form = () => {
         e.preventDefault();
 
         const form = e.target;
-        console.dir(form)
         
         const { value } = form.elements.name;
 
@@ -38,7 +37,6 @@ export const Form = () => {
             [form.elements.name.name]: value,
             [form.elements.number.name]: form.elements.number.value,
         }
-        console.log(contactData)
         
         dispatch(addContact(contactData));
 

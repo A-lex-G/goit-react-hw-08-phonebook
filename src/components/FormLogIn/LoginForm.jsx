@@ -16,12 +16,16 @@ export const LoginForm = () => {
 
         e.preventDefault();
 
+        const form = e.target;
+
         const data = e.currentTarget.elements;
         const logInCredentials = {
             email: data.email.value,
             password: data.password.value,
         }
-        dispatch(LogIn(logInCredentials));        
+        dispatch(LogIn(logInCredentials));
+        
+        form.reset();
     }
 
     return (

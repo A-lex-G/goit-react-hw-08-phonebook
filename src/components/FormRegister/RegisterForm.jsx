@@ -15,6 +15,8 @@ export const RegisterForm = () => {
     const handleRegistration = e => {
 
         e.preventDefault();
+
+        const form = e.target;
         
         const data = e.currentTarget.elements;
         const registrationCredentials = {
@@ -23,6 +25,8 @@ export const RegisterForm = () => {
             password: data.password.value,
         }
         dispatch(register(registrationCredentials));
+
+        form.reset();
     }
 
     return (
