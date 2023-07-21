@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_homework_template=self.webpackChunkreact_homework_template||[]).push([[415],{5415:function(e,t,n){n.r(t),n.d(t,{default:function(){return r}});var o=n(184);function r(){return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)("h1",{children:"This is PhoneBook wellcome page..."}),(0,o.jsx)("p",{children:"If you have no account, please poceed to registration else set your login data"})]})}}}]);
+//# sourceMappingURL=415.f7c4d10e.chunk.js.map
